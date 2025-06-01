@@ -22,7 +22,7 @@ enum RANK {
 	JACK, 
 	QUEEN, 
 	KING, 
-	ACE }
+	ACE };
 
 class Card {
 private:

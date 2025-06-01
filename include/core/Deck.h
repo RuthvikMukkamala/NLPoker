@@ -20,6 +20,6 @@ public:
 
 	size_t size() const; 
 	bool isEmpty() const; 
-}
+};
 
 #endif

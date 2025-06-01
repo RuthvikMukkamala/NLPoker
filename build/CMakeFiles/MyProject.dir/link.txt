@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/MyProject.dir/src/main.cpp.o CMakeFiles/MyProject.dir/src/Player.cpp.o CMakeFiles/MyProject.dir/src/Hand.cpp.o CMakeFiles/MyProject.dir/src/GameState.cpp.o CMakeFiles/MyProject.dir/src/Card.cpp.o CMakeFiles/MyProject.dir/src/Deck.cpp.o CMakeFiles/MyProject.dir/src/Evaluator.cpp.o -o MyProject

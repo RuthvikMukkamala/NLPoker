@@ -22,23 +22,31 @@ struct HandStrength {
 	HandType type; 
 	std::vector<int> kickers; 
 
-	bool operator>(const HandStrength& other) const; 
+	bool operator>(const HandStrength& other) const;
+    bool operator==(const HandStrength& other) const; // Added for ties
 	std::string toString() const; 
 
 }; 
 
 class HandEvaluator {
 public:
-    static HandStrength evaluate(const std::vector<Card>& cards);
+    static HandStrength evaluate(const std::vector<Card>& cards); // Evaluates N cards (e.g. 7 cards)
+    static HandStrength evaluate(const std::vector<Card>& hand, const std::vector<Card>& communityCards); // Convenience overload
     static std::string getHandTypeName(HandType type);
+    // Monte Carlo method - should be public
+    static double calculateEquityMonteCarlo(const std::vector<Card>& heroHand,
+                                            const std::vector<Card>& communityCards,
+                                            int numOpponents,
+                                            int numSimulations);
     
 private:
     static void generateCombinations(const std::vector<Card>& cards, int k, int start, 
                                    std::vector<Card> current, std::vector<std::vector<Card>>& result);
-    static HandStrength evaluateFiveCards(std::vector<Card> cards);
-    static bool isStraight(const std::vector<Card>& cards, Rank& straightHigh);
+    static HandStrength evaluateFiveCards(std::vector<Card> cards); // Keep this for direct 5-card eval
+    // The simulateRandomTrial was initially planned but its logic is currently within calculateEquityMonteCarlo.
+    static bool isStraight(const std::vector<Card>& cards, RANK& straightHigh);
     static bool isFlush(const std::vector<Card>& cards);
-    static std::map<Rank, int> getRankCounts(const std::vector<Card>& cards);
+    static std::map<RANK, int> getRankCounts(const std::vector<Card>& cards);
 };
 
 #endif
